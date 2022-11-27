@@ -1,0 +1,131 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Payment;
+
+class PaymentController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $tabel = Payment::all();
+
+        return response()->json([
+            "message" => "Payments",
+            "data" => $tabel
+        ], 201);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'metode_pembayaran' => 'required|string',
+            'total_pesanan' => 'required|integer'
+        ]);
+
+        $data = Payment::create([
+            'metode_pembayaran' => $request->metode_pembayaran,
+            'total_pesanan' => $request->total_pesanan
+        ]);
+
+        if ($data) {
+            return response([
+                'status' => 201,
+                'message' => "Data Pembayaran berhasil ditambahkan",
+                'data' => $data
+            ]);
+        }else {
+            return response([
+                'status' => 401,
+                'message' => "Data Pembayaran gagal ditambahkan",
+                'data' => null
+            ]);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $tabel = Payment::find($id);
+        if($tabel){
+            return $tabel;
+        }else{
+            return ["message" => "Data Pembayaran tidak ditemukan"];
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $data = $request->except(['_method']);
+        $update = Payment::where("id", $id)->update($data);
+
+        return response()->json([
+            "message" => "Data Pembayaran berhasil diubah",
+            "data" => $update
+        ], 201);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $tabel = Payment::find($id);
+        if($tabel){
+            $tabel->delete();
+            return ["message" => "Data Pembayaran berhasil dihapus"];
+        }else{
+            return ["message" => "Data Pembayaran tidak ditemukan"];
+        }
+    }
+}
