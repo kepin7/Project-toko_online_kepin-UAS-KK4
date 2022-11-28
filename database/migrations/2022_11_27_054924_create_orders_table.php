@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('alamat');
             $table->integer('kode_pos');
             $table->string('nama_pesanan');
+            $table->integer('jumlah_pesanan');
             $table->string('jenis_pembayaran');
             $table->string('tanggal');
             $table->integer('total_pesanan');

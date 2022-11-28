@@ -46,6 +46,7 @@ class OrderController extends Controller
             'alamat' => 'required|string',
             'kode_pos' => 'required|integer',
             'nama_pesanan' => 'required|string',
+            'jumlah_pesanan' => 'required|integer',
             'jenis_pembayaran' => 'required|string',
             'tanggal' => 'required|string',
             'total_pesanan' => 'required|integer'
@@ -56,6 +57,7 @@ class OrderController extends Controller
             'alamat' => $request->alamat,
             'kode_pos' => $request->kode_pos,
             'nama_pesanan' => $request->nama_pesanan,
+            'jumlah_pesanan' => $request->jumlah_pesanan,
             'jenis_pembayaran' => $request->jenis_pembayaran,
             'tanggal' => $request->tanggal,
             'total_pesanan' => $request->total_pesanan

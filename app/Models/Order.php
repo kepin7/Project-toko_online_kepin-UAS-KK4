@@ -12,6 +12,7 @@ class Order extends Model
         'alamat',
         'kode_pos', 
         'nama_pesanan', 
+        'jumlah_pesanan',
         'jenis_pembayaran', 
         'tanggal', 
         'total_pesanan' 
