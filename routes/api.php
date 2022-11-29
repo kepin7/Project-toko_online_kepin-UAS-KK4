@@ -36,7 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
     Route::get('payment', [PaymentController::class, 'index']);
     Route::get('payment/{id}', [PaymentController::class, 'show']);
-    Route::resource('payment', PaymentController::class)->except('create', 'edit', 'show', 'index');
+    Route::resource('payment', PaymentController::class)->except('create', 'edit', 'show', 'index', 'destroy', 'update');
 
     Route::get('feedback/{id}', [FeedbackController::class, 'show']);
     Route::resource('feedback', FeedbackController::class)->except('create', 'edit', 'show', 'index');

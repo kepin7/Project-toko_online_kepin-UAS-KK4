@@ -46,7 +46,7 @@ class ListProdukController extends Controller
             'nama_produk' => 'required|string',
             'deskripsi' => 'required|string',
             'jumlah' => 'required|integer',
-            'harga' => 'required|integer'
+            'harga' => 'required|string'
         ]);
 
         $data = ListProduk::create([

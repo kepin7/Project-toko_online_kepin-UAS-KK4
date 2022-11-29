@@ -15,8 +15,13 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('metode_pembayaran');
-            $table->integer('total_pesanan');
+            $table->string('tanggal');
+            $table->string('nomer_pembayaran');
+            $table->string('nomer_pesanan');
+            $table->integer('id_produk');
+            $table->string('total_pesanan');
+            $table->string('bayar');
+            $table->string('kembalian');
             $table->timestamps();
         });
     }

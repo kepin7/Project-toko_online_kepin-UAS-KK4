@@ -19,7 +19,7 @@ class CreateListProduksTable extends Migration
             $table->string('nama_produk');
             $table->string('deskripsi');
             $table->integer('jumlah');
-            $table->integer('harga');
+            $table->string('harga');
             $table->timestamps();
         });
     }

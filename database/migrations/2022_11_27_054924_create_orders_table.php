@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('jumlah_pesanan');
             $table->string('jenis_pembayaran');
             $table->string('tanggal');
-            $table->integer('total_pesanan');
+            $table->string('total_pesanan');
             $table->timestamps();
         });
     }

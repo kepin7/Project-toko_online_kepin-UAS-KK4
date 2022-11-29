@@ -43,13 +43,23 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'metode_pembayaran' => 'required|string',
-            'total_pesanan' => 'required|integer'
+            'tanggal' => 'required|string',
+            'nomer_pembayaran' => 'required|string',
+            'nomer_pesanan' => 'required|integer',
+            'id_produk' => 'required|integer',
+            'total_pesanan' => 'required|string',
+            'bayar' => 'required|string',
+            'kembalian' => 'required|string'
         ]);
 
         $data = Payment::create([
-            'metode_pembayaran' => $request->metode_pembayaran,
-            'total_pesanan' => $request->total_pesanan
+            'tanggal' => $request->tanggal,
+            'nomer_pembayaran' => $request->nomer_pembayaran,
+            'nomer_pesanan' =>$request->nomer_pesanan,
+            'id_produk' =>$request->id_produk,
+            'total_pesanan' =>$request->total_pesanan,
+            'bayar' =>$request->bayar,
+            'kembalian' =>$request->kembalian
         ]);
 
         if ($data) {
@@ -103,13 +113,7 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->except(['_method']);
-        $update = Payment::where("id", $id)->update($data);
-
-        return response()->json([
-            "message" => "Data Pembayaran berhasil diubah",
-            "data" => $update
-        ], 201);
+        //
     }
 
     /**
@@ -120,12 +124,6 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        $tabel = Payment::find($id);
-        if($tabel){
-            $tabel->delete();
-            return ["message" => "Data Pembayaran berhasil dihapus"];
-        }else{
-            return ["message" => "Data Pembayaran tidak ditemukan"];
-        }
+        //
     }
 }

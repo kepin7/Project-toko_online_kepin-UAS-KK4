@@ -49,7 +49,7 @@ class OrderController extends Controller
             'jumlah_pesanan' => 'required|integer',
             'jenis_pembayaran' => 'required|string',
             'tanggal' => 'required|string',
-            'total_pesanan' => 'required|integer'
+            'total_pesanan' => 'required|string'
 
         ]);
 
